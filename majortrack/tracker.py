@@ -2530,4 +2530,5 @@ class MajorTrack(object):
         self.sp_fluxes = {_clusters_x_pos[idx]: _fluxes[idx]
                           for idx in _fluxes}
 
-        self.alluvial = AlluvialPlot(self.sp_clusters, axes, *args, **kwargs)
+        #self.alluvial = AlluvialPlot(self.sp_clusters, axes, *args, **kwargs)
+        return self.alluvial, self.sp_fluxes
