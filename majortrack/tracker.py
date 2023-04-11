@@ -2242,6 +2242,8 @@ class MajorTrack(object):
             _iterator = iter(range(self.length))
         else:
             _iterator = iter(iterator)
+
+        print(f'_iterator : {_iterator}')
         use_community_coloring = True
         # always generate community colors (complete missing dict keys)
         # if isinstance(cluster_facecolor, dict) \
@@ -2531,4 +2533,10 @@ class MajorTrack(object):
                           for idx in _fluxes}
 
         #self.alluvial = AlluvialPlot(self.sp_clusters, axes, *args, **kwargs)
-        return self.sp_clusters, self.sp_fluxes
+        return self.sp_clusters, self.sp_fluxes, axes, *args
+
+    def get_alluvialdiagram_plot(self, sp_clusters, axes, *args, **kwargs):
+        """
+        Takes output of previous function and creates the alluvial diagramm. Creates an opportunity to manually modify sp_clusters.
+        """
+        self.alluvial = AlluvialPlot(sp_clusters, axes, *args, **kwargs)
