@@ -161,11 +161,14 @@ spp_5step['l_size'] = 9
 def _set_axis(axes, mt, spp, with_xaxis=True):
     axes.axis('equal')
     l_size = spp.pop('l_size', 9)
-    mt.get_alluvialdiagram(
+    sp_clusters, sp_fluxes, axes, *args = mt.get_alluvialdiagram(
             axes,
             invisible_x=not with_xaxis,
             **spp,
             )
+
+    mt.get_alluvialdiagram_plot(sp_clusters, axes, *args, )
+
     if with_xaxis:
         tp = [
                 (t + .5*(mt.slice_widths[i])) + .5*plot_params['cluster_width']
