@@ -2238,6 +2238,8 @@ class MajorTrack(object):
         # _dffc = kwargs.get('default_flux_facecolor', 'gray')
         _dnlw = kwargs.get('default_cluster_linewidth', 0.0)
         _dflw = kwargs.get('default_flux_linewidth', 0.0)
+        label_list = kwargs.get('label_list', None)
+
         if iterator is None:
             _iterator = iter(range(self.length))
         else:
@@ -2464,6 +2466,8 @@ class MajorTrack(object):
                         c_label = '{0}'.format(_i)
                     elif cluster_label == 'dc_index':
                         c_label = '{0}'.format(self.dcs[idx][_i])
+                    elif cluster_label == 'custom':
+                        c_label = label_list[idx][_i]
                     else:
                         c_label = None
                     tp_clusters.append(
